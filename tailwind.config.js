@@ -2,7 +2,15 @@
 module.exports = {
   content: ["./src/**/*.{html,js}"],
   theme: {
-    extend: {},
+    fontFamily: {
+      sans: 'DM Sans',
+      poppins: 'Poppins',
+    },
+    extend: {
+      backgroundImage: {
+        'poster': "url('./assets/Poster.png')",
+      }
+    },
   },
   plugins: [],
 }

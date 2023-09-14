@@ -1,9 +1,12 @@
 import './App.css';
+import Footer from './components/Footer';
+import HomePage from './components/HomePage';
+import MovieCard from './components/MovieCard';
 
 function App() {
   return (
     <div className="App">
-      <h1 className='bg-blue-500 text-white'>Martins MovieBox</h1>
+      <HomePage />
     </div>
   );
 }
