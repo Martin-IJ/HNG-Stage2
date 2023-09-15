@@ -24,7 +24,7 @@ const MovieDetails = () => {
         const data = await response.json();
         setMovieDetails(data);
       } catch (error) {
-        console.error(error);
+        console.log(error);
       }
     };
 
