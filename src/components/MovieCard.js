@@ -3,9 +3,11 @@ import FilmLogo from "../assets/IMOb.png";
 import Fruit from "../assets/fruit.png";
 import loadingImg from '../assets/loading.gif'
 import { useGlobalContext } from "../Context";
+import { Link } from 'react-router-dom';
 
 const MovieCard = () => {
   const { movies, loading } = useGlobalContext();
+  
   const img_300 = "https://image.tmdb.org/t/p/w300";
   const unavailable = "https://www.movienewz.com/img/films/poster-holder.jpg";
 
@@ -47,12 +49,13 @@ const MovieCard = () => {
               key={id}
               className="w-[100%] border border-gray-200 rounded-lg shadow m-auto"
             >
+                <Link to={`/movies/${id}`}>
               <img
                 data-testid="movie-poster"
                 src={poster_path ? `${img_300}/${poster_path}` : unavailable}
                 className="rounded-t-lg w-[100%]"
                 alt=""
-              />
+              /></Link>
               <div className="p-3">
                 <p
                   data-testid="movie-release-date"

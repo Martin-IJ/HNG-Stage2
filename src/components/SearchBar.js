@@ -4,7 +4,7 @@ import { AiOutlineSearch } from "react-icons/ai";
 import { useGlobalContext } from "../Context";
 
 const SearchBar = () => {
-  const { Search, Trigger, loading, handleSubmit, searchText } = useGlobalContext();
+  const { Trigger, loading, handleSubmit, searchText } = useGlobalContext();
 
   if (loading) {
     return (

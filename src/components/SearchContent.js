@@ -1,7 +1,7 @@
 import React from "react";
 import FilmLogo from "../assets/IMOb.png";
 import Fruit from "../assets/fruit.png";
-import loadingImg from '../assets/loading.gif'
+import loadingImg from "../assets/loading.gif";
 import { useGlobalContext } from "../Context";
 
 const SearchContent = () => {
@@ -10,12 +10,12 @@ const SearchContent = () => {
   const img_300 = "https://image.tmdb.org/t/p/w300";
   const unavailable = "https://www.movienewz.com/img/films/poster-holder.jpg";
 
-  {loading && (
-    <section style={{ textAlign: "center" }} className="section">
-      <img src={loadingImg} alt="" />
-      <h4>Loading...</h4>
-    </section>
-  )}
+    loading && (
+      <section style={{ textAlign: "center" }} className="section">
+        <img src={loadingImg} alt="" />
+        <h4>Loading...</h4>
+      </section>
+    );
 
   if (content.length < 1) {
     return (
@@ -27,7 +27,12 @@ const SearchContent = () => {
 
   return (
     <div className="text-black w-[90%] m-auto my-10 font-sans">
-      <h1 className="text-[36px] font-[700] pb-5">Search Result for <span className="uppercase underline tracking-wide text-blue-800">{searchText}</span></h1>
+      <h1 className="text-[36px] font-[700] pb-5">
+        Search Result for{" "}
+        <span className="uppercase underline tracking-wide text-blue-800">
+          {searchText}
+        </span>
+      </h1>
       <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
         {content.map((movie) => {
           const {
