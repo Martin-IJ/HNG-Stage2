@@ -1,24 +1,23 @@
-import React from 'react'
+import React from "react";
 import FilmLogo from "../assets/IMOb.png";
 import Fruit from "../assets/fruit.png";
 import loadingImg from '../assets/loading.gif'
 import { useGlobalContext } from "../Context";
 
-const MovieCard = () => {
-  const { movies, loading } = useGlobalContext();
+const SearchContent = () => {
+  const { content, loading, searchText } = useGlobalContext();
+
   const img_300 = "https://image.tmdb.org/t/p/w300";
   const unavailable = "https://www.movienewz.com/img/films/poster-holder.jpg";
 
-  if (loading) {
-    return (
-      <section className="section text-center">
-        <img src={loadingImg} alt="" />
-        <h4>Loading...</h4>
-      </section>
-    );
-  }
+  {loading && (
+    <section style={{ textAlign: "center" }} className="section">
+      <img src={loadingImg} alt="" />
+      <h4>Loading...</h4>
+    </section>
+  )}
 
-  if (movies.length < 1) {
+  if (content.length < 1) {
     return (
       <section style={{ textAlign: "center" }} className="section">
         <h4>No meals matched your search term. Please try again.</h4>
@@ -28,9 +27,9 @@ const MovieCard = () => {
 
   return (
     <div className="text-black w-[90%] m-auto my-10 font-sans">
-      <h1 className="text-[36px] font-[700] pb-5">Featured Movie</h1>
+      <h1 className="text-[36px] font-[700] pb-5">Search Result for <span className="uppercase underline tracking-wide text-blue-800">{searchText}</span></h1>
       <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
-        {movies.map((movie) => {
+        {content.map((movie) => {
           const {
             id,
             title,
@@ -85,4 +84,4 @@ const MovieCard = () => {
   );
 };
 
-export default MovieCard;
+export default SearchContent;
