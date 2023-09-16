@@ -7,15 +7,14 @@ import { Link } from 'react-router-dom';
 
 const MovieCard = () => {
   const { movies, loading } = useGlobalContext();
-  
+
   const img_300 = "https://image.tmdb.org/t/p/w300";
   const unavailable = "https://www.movienewz.com/img/films/poster-holder.jpg";
 
   if (loading) {
     return (
-      <section className="section text-center">
-        <img src={loadingImg} alt="" />
-        <h4>Loading...</h4>
+      <section className="m-auto flex items-center text-center">
+        <img src={loadingImg} alt="loading" className='m-auto' />
       </section>
     );
   }
@@ -23,7 +22,7 @@ const MovieCard = () => {
   if (movies.length < 1) {
     return (
       <section style={{ textAlign: "center" }} className="section">
-        <h4>No meals matched your search term. Please try again.</h4>
+        <h4>No movies matched your search term. Please try again.</h4>
       </section>
     );
   }
@@ -54,7 +53,7 @@ const MovieCard = () => {
                 data-testid="movie-poster"
                 src={poster_path ? `${img_300}/${poster_path}` : unavailable}
                 className="rounded-t-lg w-[100%]"
-                alt=""
+                alt={title}
               /></Link>
               <div className="p-3">
                 <p
@@ -71,11 +70,11 @@ const MovieCard = () => {
                 </h3>
                 <div className="flex justify-between">
                   <span className="flex items-center gap-2">
-                    <img src={FilmLogo} alt="" />{" "}
+                    <img src={FilmLogo} alt="movie logo" />{" "}
                     <p className="text-gray-600">{firstTwoPopularity} / 100</p>
                   </span>
                   <span className="flex items-center gap-2">
-                    <img src={Fruit} alt="" />{" "}
+                    <img src={Fruit} alt="Rated movies" />{" "}
                     <p className="text-gray-600">{firstTwoVoteCount}%</p>
                   </span>
                 </div>

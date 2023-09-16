@@ -9,7 +9,7 @@ const SearchBar = () => {
   if (loading) {
     return (
       <section style={{ textAlign: "center" }} className="section">
-        <img src={loadingImg} alt="" />
+        <img src={loadingImg} alt="loading" />
         <h4>Loading...</h4>
       </section>
     );

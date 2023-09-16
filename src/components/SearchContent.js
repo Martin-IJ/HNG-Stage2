@@ -3,6 +3,7 @@ import FilmLogo from "../assets/IMOb.png";
 import Fruit from "../assets/fruit.png";
 import loadingImg from "../assets/loading.gif";
 import { useGlobalContext } from "../Context";
+import { Link } from "react-router-dom";
 
 const SearchContent = () => {
   const { content, loading, searchText } = useGlobalContext();
@@ -10,17 +11,16 @@ const SearchContent = () => {
   const img_300 = "https://image.tmdb.org/t/p/w300";
   const unavailable = "https://www.movienewz.com/img/films/poster-holder.jpg";
 
-    loading && (
-      <section style={{ textAlign: "center" }} className="section">
-        <img src={loadingImg} alt="" />
-        <h4>Loading...</h4>
-      </section>
-    );
+  loading && (
+    <section className="m-auto text-center h-screen flex items-center">
+      <img src={loadingImg} alt="loading" className="m-auto" />
+    </section>
+  );
 
   if (content.length < 1) {
     return (
-      <section style={{ textAlign: "center" }} className="section">
-        <h4>No meals matched your search term. Please try again.</h4>
+      <section className="m-auto text-center flex items-center h-screen">
+        <h4>No search matched your search term. Please try again.</h4>
       </section>
     );
   }
@@ -51,12 +51,14 @@ const SearchContent = () => {
               key={id}
               className="w-[100%] border border-gray-200 rounded-lg shadow m-auto"
             >
-              <img
-                data-testid="movie-poster"
-                src={poster_path ? `${img_300}/${poster_path}` : unavailable}
-                className="rounded-t-lg w-[100%]"
-                alt=""
-              />
+              <Link to={`/movies/${id}`}>
+                <img
+                  data-testid="movie-poster"
+                  src={poster_path ? `${img_300}/${poster_path}` : unavailable}
+                  className="rounded-t-lg w-[100%]"
+                  alt={title}
+                />
+              </Link>
               <div className="p-3">
                 <p
                   data-testid="movie-release-date"
@@ -72,11 +74,11 @@ const SearchContent = () => {
                 </h3>
                 <div className="flex justify-between">
                   <span className="flex items-center gap-2">
-                    <img src={FilmLogo} alt="" />{" "}
+                    <img src={FilmLogo} alt="film logo" />{" "}
                     <p className="text-gray-600">{firstTwoPopularity} / 100</p>
                   </span>
                   <span className="flex items-center gap-2">
-                    <img src={Fruit} alt="" />{" "}
+                    <img src={Fruit} alt="rated movies" />{" "}
                     <p className="text-gray-600">{firstTwoVoteCount}%</p>
                   </span>
                 </div>

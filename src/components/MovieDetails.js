@@ -5,6 +5,7 @@ import MovieIcon from "../assets/Movie Projector.png";
 import TvIcon from "../assets/TV Show.png";
 import CalenderIcon from "../assets/Calendar.png";
 import LogoutIcon from "../assets/Logout.png";
+import loadingImg from "../assets/loading.gif";
 import { Link, useParams } from "react-router-dom";
 import PlayBtn from "../assets/Play.png";
 
@@ -32,7 +33,11 @@ const MovieDetails = () => {
   }, [id]);
 
   if (!movieDetails) {
-    return <div>Loading...</div>;
+    return (
+      <div className="m-auto text-center flex items-center h-screen">
+        <img src={loadingImg} alt="loading" className="m-auto" />
+      </div>
+    );
   }
 
   const img_300 = "https://image.tmdb.org/t/p/w300";
@@ -40,30 +45,30 @@ const MovieDetails = () => {
 
   return (
     <div className="font-poppins lg:flex">
-      <div className="flex flex-wrap text-center lg:w-1/5 lg:h-screen lg:flex-col lg:rounded-r-3xl lg:border-r-2 justify-around gap-3 items-center lg:items-start px-2 pt-3 lg:px-0 lg:p-0 border-b-2 lg:border-b-0 rounded-b-3xl">
+      <div className="flex flex-wrap text-center lg:flex-1 lg:w-[20%] lg:max-w-[20%] lg:h-screen lg:flex-col lg:rounded-r-3xl lg:border-r-2 justify-around gap-3 items-center lg:items-start px-2 pt-3 lg:px-0 lg:p-0 border-b-2 lg:border-b-0 rounded-b-3xl">
         <Link to="/">
           <div className="flex items-center gap-4 text-[#333333] font-sans text-lg lg:ml-5 font-[700]">
-            <img src={Logo} alt="" />
+            <img src={Logo} alt="Play button" />
             <p>MovieBox</p>
           </div>
         </Link>
         <div className="flex flex-wrap text-center lg:w-full lg:items-start lg:flex-col">
           <Link to="/" className="lg:w-full">
             <button className="flex lg:w-full lg:items-center gap-3 px-7 lg:px-10 py-6 lg:py-7 lg:focus:border-r-2 lg:focus:border-b-0 focus:bg-[#f7e7eb] focus:border-b-2 focus:border-[#be123c]">
-              <img src={HomeIcon} alt="" />
+              <img src={HomeIcon} alt="home icon" />
               <span className="hidden lg:block text-sm">Home</span>
             </button>
           </Link>
           <button className="flex lg:w-full lg:items-center gap-3 px-7 lg:px-10 py-6 lg:py-7 lg:focus:border-r-2 lg:focus:border-b-0 focus:bg-[#f7e7eb] focus:border-b-2 focus:border-[#be123c]">
-            <img src={MovieIcon} alt="" />
+            <img src={MovieIcon} alt="movie icon" />
             <span className="hidden lg:block text-sm">Movies</span>
           </button>
           <button className="flex lg:w-full lg:items-center gap-3 px-7 lg:px-10 py-6 lg:py-7 lg:focus:border-r-2 lg:focus:border-b-0 focus:bg-[#f7e7eb] focus:border-b-2 focus:border-[#be123c]">
-            <img src={TvIcon} alt="" />
+            <img src={TvIcon} alt="tv icon" />
             <span className="hidden lg:block text-sm">TvSeries</span>
           </button>
           <button className="flex lg:w-full lg:items-center gap-3 px-7 lg:px-10 py-6 lg:py-7 lg:focus:border-r-2 lg:focus:border-b-0 focus:bg-[#f7e7eb] focus:border-b-2 focus:border-[#be123c]">
-            <img src={CalenderIcon} alt="" />
+            <img src={CalenderIcon} alt="calender icon" />
             <span className="hidden lg:block text-sm">Upcoming</span>
           </button>
         </div>
@@ -77,11 +82,11 @@ const MovieDetails = () => {
           </button>
         </div>
         <p className="lg:flex lg:items-center gap-3 lg:ml-5 hidden">
-          <img src={LogoutIcon} alt="" />
+          <img src={LogoutIcon} alt="logout icon" />
           <span className="hidden lg:block">Log out</span>
         </p>
       </div>
-      <div className="p-5 lg:p-10">
+      <div className="p-5 lg:p-10 lg:w-[100%] lg:max-w-[100%] lg:flex-1">
         <div
           className="bg-cover bg-center rounded-3xl w-[100%] h-[500px] m-auto"
           style={{
@@ -95,7 +100,7 @@ const MovieDetails = () => {
           <div className="h-full flex justify-center items-center flex-col">
             <img
               src={PlayBtn}
-              alt=""
+              alt="play button"
               className="p-5 rounded-full bg-[#ffffff82]"
             />
             <p className="text-gray-300">Watch Trailer</p>
