@@ -19,7 +19,7 @@ const AppProvider = ({ children }) => {
         throw new Error("Network response was not ok");
       }
       const data = await response.json();
-      const first10Movies = data.results.slice(0, 10);
+      const first10Movies = data.results;
       setMovies(first10Movies);
     } catch (error) {
       console.log(error);
